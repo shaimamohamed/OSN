@@ -72,13 +72,11 @@ namespace Data.DataBase
                 {
                     new Subject{
                         ID = 1,
-                       Name ="Subject1",
-                       TermID = 1
+                       Name ="Subject1"
                     },
                     new Subject{
                         ID = 2,
-                       Name ="Subject2",
-                       TermID = 2
+                       Name ="Subject2"
                     }
                 };
 
@@ -104,7 +102,7 @@ namespace Data.DataBase
                         Email = "a@b.com",
                         Mobile = "0123456789",
                         DOB = System.DateTime.Now,
-                        TermID = 1,
+                        CurrentTermID = 1,
                         Parents = new Parent[]{
                          new Parent{
                             ID = 1,
@@ -129,7 +127,7 @@ namespace Data.DataBase
                         Email = "a@b.com",
                         Mobile = "0123456789",
                         DOB = System.DateTime.Now,
-                        TermID = 1,
+                        CurrentTermID = 1,
                         Parents = new Parent[]{
                          new Parent{
                             ID = 1,

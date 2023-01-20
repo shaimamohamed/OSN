@@ -18,8 +18,8 @@ namespace Core.Entities
         [Required(ErrorMessage = "Subject Name is Required")]
         public string Name { get; set; }
         public string Description { get; set; }
-        public int TermID { get; set; }
-        public Term Term { get; set; }
+        //public int TermID { get; set; }
+        //public Term Term { get; set; }
 
         public string CreatedBy { get; set; }
         public DateTime? CreatedOn { get; set; }

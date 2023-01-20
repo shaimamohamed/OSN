@@ -23,8 +23,7 @@ namespace Core.Entities
         [Display(Name ="BirthDay")]
         public DateTime DOB { get; set; }
 
-        public int TermID { get; set; }
-        public Term Term { get; set; }
+        public int CurrentTermID { get; set; }
 
         public string CreatedBy { get; set; }
         public DateTime? CreatedOn { get; set; }

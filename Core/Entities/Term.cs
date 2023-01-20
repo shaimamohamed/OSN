@@ -23,7 +23,6 @@ namespace Core.Entities
         public string UpdatedBy { get; set; }
         public DateTime? UpdatedOn { get; set; }
 
-        //public virtual ICollection<Student> Students { get; set; }
         public virtual ICollection<Subject> Subjects { get; set; }
 
     }

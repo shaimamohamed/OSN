@@ -14,9 +14,9 @@ namespace Data.DataBase
 {
     public class AssessmentProjectDbContext : IdentityDbContext<ApplicationUser>
     {
-        public AssessmentProjectDbContext()
-        {
-        }
+        //public AssessmentProjectDbContext()
+        //{
+        //}
 
         public AssessmentProjectDbContext(DbContextOptions<AssessmentProjectDbContext> options)
             : base(options)
@@ -34,33 +34,35 @@ namespace Data.DataBase
             if (!optionsBuilder.IsConfigured)
             {
                 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=.\\MSSQLSERVER14;Database=AssessmentProjectDb;Trusted_Conn‌ection=True;Multiple‌​ActiveResultSets=tru‌​e;");
+                optionsBuilder.UseSqlServer("Server=.(localdb)\\mssqllocaldb;Database=OSNDB;Trusted_Conn‌ection=True;Multiple‌​ActiveResultSets=tru‌​e;");
             }
         }
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Student>()
-                        .HasIndex(b => b.ID)
-                        .IsUnique();
+            //modelBuilder.Entity<Student>()
+            //            .HasIndex(b => b.ID)
+            //            .IsUnique();
 
-            modelBuilder.Entity<Parent>()
-                        .HasIndex(b => b.ID)
-                        .IsUnique();
+            //modelBuilder.Entity<Parent>()
+            //            .HasIndex(b => b.ID)
+            //            .IsUnique();
 
-            modelBuilder.Entity<Subject>()
-                        .HasIndex(b => b.ID)
-                        .IsUnique();
+            //modelBuilder.Entity<Subject>()
+            //            .HasIndex(b => b.ID)
+            //            .IsUnique();
 
-            modelBuilder.Entity<Term>()
-                        .HasIndex(b => b.ID)
-                        .IsUnique();
+            //modelBuilder.Entity<Term>()
+            //            .HasIndex(b => b.ID)
+            //            .IsUnique();
 
-            modelBuilder.Entity<Marks>()
-                         .HasIndex(b => b.ID)
-                         .IsUnique();
+            //modelBuilder.Entity<Marks>()
+            //             .HasIndex(b => b.ID)
+            //             .IsUnique();
 
             //OnModelCreatingPartial(modelBuilder);
+            base.OnModelCreating(modelBuilder);
+
         }
         //partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
