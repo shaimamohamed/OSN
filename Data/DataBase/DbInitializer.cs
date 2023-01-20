@@ -14,13 +14,13 @@ namespace Data.DataBase
         public static void Initialize(AssessmentProjectDbContext context)
         {
             context.Database.EnsureCreated();
-    
+
             // seed User
             //if (!context.Users.Any())
             //{
             //    var users = new use[]
             //    {
-            //        new Users{
+            //        new User{
             //            ID = 1,
             //           Name ="Term1"
             //        },

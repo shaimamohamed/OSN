@@ -60,9 +60,9 @@ namespace Data.DataBase
                          .HasIndex(b => b.ID)
                          .IsUnique();
 
-            OnModelCreatingPartial(modelBuilder);
+            //OnModelCreatingPartial(modelBuilder);
         }
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+        //partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
 
     }

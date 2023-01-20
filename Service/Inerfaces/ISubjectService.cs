@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Service.Inerfaces
 {
-    interface ISubjectService
+    public interface ISubjectService
     {
     }
 }

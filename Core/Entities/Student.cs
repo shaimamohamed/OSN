@@ -20,6 +20,7 @@ namespace Core.Entities
         public string Gender { get; set; }
         public string Email { get; set; }
         public string Mobile { get; set; }
+        [Display(Name ="BirthDay")]
         public DateTime DOB { get; set; }
 
         public int TermID { get; set; }

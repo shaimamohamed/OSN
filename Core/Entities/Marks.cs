@@ -20,22 +20,26 @@ namespace Core.Entities
 
         [Required(ErrorMessage = "Student is Required")]
         public int StudentId { get; set; }
+        public Student Student { get; set; }
+
         [Required(ErrorMessage = "Subject is Required")]
         public int SubjectId { get; set; }
-        [Required(ErrorMessage = "term is Required")]
+        public Subject Subject { get; set; }
+
+        [Required(ErrorMessage = "Term is Required")]        
         public int TermId { get; set; }
-        [Range(minimum:0,maximum:100,ErrorMessage ="Mark out of range 0 to 100")]
+        public Term Term { get; set; }
+
+        [Required(ErrorMessage = "Student Mark is Required")]
+        [Range(minimum:0,maximum:100,ErrorMessage ="Mark must be in range 0 to 100")]
         public float Mark { get; set; }
         public bool IsAbsent { get; set; }
-        public string Description { get; set; }
+        public string Comment { get; set; }
 
         public string CreatedBy { get; set; }
         public DateTime? CreatedOn { get; set; }
         public string UpdatedBy { get; set; }
         public DateTime? UpdatedOn { get; set; }
 
-        public Student Student { get; set; }
-        public Subject Subject { get; set; }
-        public Term Term { get; set; }
     }
 }

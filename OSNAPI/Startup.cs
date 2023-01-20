@@ -1,5 +1,7 @@
 using Data.Authentication;
 using Data.DataBase;
+using Data.Inerfaces;
+using Data.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +45,16 @@ namespace OSNAPI
             // For Entity Framework  
             services.AddDbContext<AssessmentProjectDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnStr")));
 
-            // Dependency Injection : services.AddScoped<IEmpService, EmpService>();
+            // configure DI for application services 
+            //services.AddScoped<IStudentService, StudentService>();
+            //services.AddScoped<ISubjectService, SubjectService>();
+            //services.AddScoped<ITermService, TermService>();
+            //services.AddScoped<IMarksService, MarksService>();
+
+            //services.AddScoped<IStudentRepository, StudentRepository>();
+            //services.AddScoped<ISubjectRepository, SubjectRepository>();
+            //services.AddScoped<ITermRepository, TermRepository>();
+            //services.AddScoped<IMarksRepository, MarksRepository>();
 
             // For Identity  
             services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -86,6 +98,12 @@ namespace OSNAPI
             }
 
             app.UseRouting();
+
+            //global cors policy for gloal access to api
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

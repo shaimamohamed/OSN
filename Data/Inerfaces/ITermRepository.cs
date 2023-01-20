@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data.Inerfaces
 {
-    interface ITermRepository
+    public interface ITermRepository
     {
     }
 }
