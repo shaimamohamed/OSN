@@ -14,7 +14,7 @@ using Core.Model.Search;
 
 namespace OSNAPI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SearchCriteriaController : ControllerBase
@@ -45,8 +45,8 @@ namespace OSNAPI.Controllers
             return Ok(response);
         }
 
-        [HttpGet("GetSubjectByNameAndTermRequest")]
-        public async Task<IActionResult> GetSubjectByNameandTermRequest(SubjectByNameandTermRequest request)
+        [HttpGet("GetSubjectByNameAndTerm")]
+        public async Task<IActionResult> GetSubjectByNameandTerm([FromHeader] SubjectByNameandTermRequest request)
         {
             var customerId = 0;
             int.TryParse(User?.Claims?.SingleOrDefault(a => a.Type == ClaimTypes.NameIdentifier)?.Value, out customerId);

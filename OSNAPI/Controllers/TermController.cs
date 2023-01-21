@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace OSNAPI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TermController : ControllerBase
@@ -22,7 +22,7 @@ namespace OSNAPI.Controllers
         private readonly ILogger _logger;
         public TermController(ILogger logger , ITermService termService)
         {
-            _termService = _termService;
+            _termService = termService;
             _logger = logger;
         }
 

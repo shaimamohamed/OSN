@@ -42,7 +42,7 @@ namespace OSNAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "OSNAPI", Version = "v1" });
 
-        });
+             });
 
             // For Entity Framework  
             services.AddDbContext<AssessmentProjectDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnStr")));
@@ -61,6 +61,7 @@ namespace OSNAPI
             services.AddScoped<IMarksRepository, MarksRepository>();
 
             #endregion
+
             // For Identity  
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AssessmentProjectDbContext>()
@@ -89,7 +90,10 @@ namespace OSNAPI
                 };
             });
 
-
+            //services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("ali", policy => policy.RequireClaim("UserName"));
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

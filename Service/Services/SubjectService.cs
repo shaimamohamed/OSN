@@ -50,7 +50,8 @@ namespace Service.Services
 
             var respnose = new GeneralResponse<SubjectByNameandTermResponse>();
 
-            var marks = _marksRepository.GetALLMarks();
+            var marks = _marksRepository.GetALLMarks()?
+                        .Where(q => q.StudentId == request.Student && q.TermId == request.Term).ToList();
 
             if (marks == null || marks.Count <= 0)
             {

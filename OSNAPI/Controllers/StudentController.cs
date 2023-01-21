@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace OSNAPI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class StudentController : ControllerBase

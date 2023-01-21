@@ -61,7 +61,7 @@ namespace Service.Services
                 Data = new StuentByNameResponse()
                 {
                     student = studentt,
-                    parents = studentt.Parents.ToList()
+                    //parents = studentt.Parents.ToList()
                 }
             };
 
