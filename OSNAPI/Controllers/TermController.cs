@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace OSNAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TermController : ControllerBase
@@ -27,7 +28,6 @@ namespace OSNAPI.Controllers
 
         #region Actions
         [Produces("application/json")]
-        [Authorize]
         [HttpGet("GetAllTerms")]
         public async Task<IActionResult> GetAllTerms()
         {

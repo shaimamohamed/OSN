@@ -15,7 +15,7 @@ namespace Service.Services
         private readonly ITermRepository _termRepository;
         public TermService(ITermRepository termRepository)
         {
-            _termRepository = termRepository;
+            _termRepository = termRepository ?? throw new ArgumentNullException(nameof(termRepository));
         }
 
         #region Actions

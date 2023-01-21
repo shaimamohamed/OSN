@@ -14,6 +14,7 @@ using Core.Model.Search;
 
 namespace OSNAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SearchCriteriaController : ControllerBase

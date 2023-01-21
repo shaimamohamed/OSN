@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Service.Inerfaces;
 using Service.Services;
 using System;
 using System.Collections.Generic;
@@ -40,22 +41,26 @@ namespace OSNAPI
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "OSNAPI", Version = "v1" });
-            });
+
+        });
 
             // For Entity Framework  
             services.AddDbContext<AssessmentProjectDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnStr")));
 
-            // configure DI for application services 
-            //services.AddScoped<IStudentService, StudentService>();
-            //services.AddScoped<ISubjectService, SubjectService>();
-            //services.AddScoped<ITermService, TermService>();
-            //services.AddScoped<IMarksService, MarksService>();
+            #region  configure DI for application services 
+            services.AddScoped<ILogger, Logger<ILoggerFactory>>();
 
-            //services.AddScoped<IStudentRepository, StudentRepository>();
-            //services.AddScoped<ISubjectRepository, SubjectRepository>();
-            //services.AddScoped<ITermRepository, TermRepository>();
-            //services.AddScoped<IMarksRepository, MarksRepository>();
+            services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<ISubjectService, SubjectService>();
+            services.AddScoped<ITermService, TermService>();
+            services.AddScoped<IMarksService, MarksService>();
 
+            services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<ISubjectRepository, SubjectRepository>(); 
+            services.AddScoped<ITermRepository, TermRepository>();
+            services.AddScoped<IMarksRepository, MarksRepository>();
+
+            #endregion
             // For Identity  
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AssessmentProjectDbContext>()
