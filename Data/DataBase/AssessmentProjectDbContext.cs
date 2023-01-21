@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Data.DataBase
 {
-    public class AssessmentProjectDbContext : IdentityDbContext<ApplicationUser>
+    public partial  class AssessmentProjectDbContext : IdentityDbContext<ApplicationUser>
     {
         //public AssessmentProjectDbContext()
         //{
@@ -48,11 +48,11 @@ namespace Data.DataBase
             //            .HasIndex(b => b.ID)
             //            .IsUnique();
 
-            //modelBuilder.Entity<Subject>()
+            //modelBuilder.Entity<Term>()
             //            .HasIndex(b => b.ID)
             //            .IsUnique();
 
-            //modelBuilder.Entity<Term>()
+            //modelBuilder.Entity<Subject>()
             //            .HasIndex(b => b.ID)
             //            .IsUnique();
 
@@ -60,11 +60,11 @@ namespace Data.DataBase
             //             .HasIndex(b => b.ID)
             //             .IsUnique();
 
-            //OnModelCreatingPartial(modelBuilder);
-            base.OnModelCreating(modelBuilder);
-
+             base.OnModelCreating(modelBuilder);
+            OnModelCreatingPartial(modelBuilder);
         }
-        //partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
 
     }
