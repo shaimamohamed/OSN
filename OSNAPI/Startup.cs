@@ -50,16 +50,17 @@ namespace OSNAPI
             #region  configure DI for application services 
             services.AddScoped<ILogger, Logger<ILoggerFactory>>();
 
-            services.AddScoped<IStudentService, StudentService>();
-            services.AddScoped<ISubjectService, SubjectService>();
-            services.AddScoped<ITermService, TermService>();
-            services.AddScoped<IMarksService, MarksService>();
-
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<ISubjectRepository, SubjectRepository>(); 
             services.AddScoped<ITermRepository, TermRepository>();
             services.AddScoped<IMarksRepository, MarksRepository>();
+            services.AddScoped<IReportsRepository, ReportsRepository>();
 
+            services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<ISubjectService, SubjectService>();
+            services.AddScoped<ITermService, TermService>();
+            services.AddScoped<IMarksService, MarksService>();
+            services.AddScoped<IReportsService, ReportsService>();
             #endregion
 
             // For Identity  
@@ -68,27 +69,27 @@ namespace OSNAPI
                 .AddDefaultTokenProviders();
 
             // Adding Authentication  
-            //services.AddAuthentication(options =>
-            //{
-            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            //    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            //})
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
 
             // Adding Jwt Bearer  
-            //.AddJwtBearer(options =>
-            //{
-            //    options.SaveToken = true;
-            //    options.RequireHttpsMetadata = false;
-            //    options.TokenValidationParameters = new TokenValidationParameters()
-            //    {
-            //        ValidateIssuer = true,
-            //        ValidateAudience = true,
-            //        ValidAudience = Configuration["JWT:ValidAudience"],
-            //        ValidIssuer = Configuration["JWT:ValidIssuer"],
-            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
-            //    };
-            //});
+            .AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.RequireHttpsMetadata = false;
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = Configuration["JWT:ValidAudience"],
+                    ValidIssuer = Configuration["JWT:ValidIssuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
+                };
+            });
 
             //services.AddAuthorization(options =>
             //{
