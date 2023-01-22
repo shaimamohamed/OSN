@@ -1,4 +1,5 @@
-﻿using Data.Authentication;
+﻿using Core.Model;
+using Data.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -65,10 +66,16 @@ namespace OSNAPI.Controllers
                     signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                     );
 
-                return Ok(new
+                //return Ok(new
+                //{
+                //    token = new JwtSecurityTokenHandler().WriteToken(token),
+                //    expiration = token.ValidTo
+                //});
+                return Ok(new GeneralResponse<string>()
                 {
-                    token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration = token.ValidTo
+                    Success = true,
+                    Data = new JwtSecurityTokenHandler().WriteToken(token),
+                    Message =  token.ValidTo.ToLongDateString()
                 });
             }
             return Unauthorized();

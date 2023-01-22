@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Core.Entities;
 using Data.DataBase;
+using System.Net.Http;
 
 namespace OSNWebProject.Controllers
 {
@@ -18,7 +19,34 @@ namespace OSNWebProject.Controllers
         {
             _context = context;
         }
+        private Student getStudentByName()
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:64189/api/");
+                //HTTP GET
+                var responseTask = client.GetAsync("student");
+                responseTask.Wait();
 
+                //var result = responseTask.Result;
+                //if (result.IsSuccessStatusCode)
+                //{
+                //    var readTask = result.Content.ReadAsAsync<IList<StudentViewModel>>();
+                //    readTask.Wait();
+
+                //    students = readTask.Result;
+                //}
+                //else //web api sent error response 
+                //{
+                //    //log response status here..
+
+                //    students = Enumerable.Empty<StudentViewModel>();
+
+                //    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                //}
+            }
+            return null;
+        }
         // GET: Students
         public async Task<IActionResult> Index()
         {

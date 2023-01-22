@@ -12,6 +12,9 @@ using System;
 using OSNAPI.Model;
 using Core.Entities;
 using System.Net.Http;
+using System.Linq;
+using Newtonsoft.Json;
+using Core.Model;
 
 namespace OSNWebProject.Controllers
 {
@@ -28,83 +31,53 @@ namespace OSNWebProject.Controllers
 
         [HttpPost]
         [Route("login")]
-        public ActionResult Login(LoginModel model)
+        public async Task<ActionResult> Login(LoginModel model)
         {
-            //using (var client = new HttpClient())
-            //{
-            //    client.BaseAddress = new Uri("http://localhost:64739/api/Authenticate/login");
 
-            //    //HTTP POST
-            //    var postTask = client.PostAsync(BaseAddress, model);
-            //    postTask.Wait();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:64739/api/Authenticate/login");
+                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                StringContent content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
+                var response = await client.PostAsync("http://localhost:64739/api/Authenticate/login", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = await response.Content.ReadAsStringAsync();
+                    var res = JsonConvert.DeserializeObject<GeneralResponse<string>>(result);
+                    // Save token
 
-            //    var result = postTask.Result;
-            //    if (result.IsSuccessStatusCode)
-            //    {
-            //        return RedirectToAction("Index");
-            //    }
-            //}
+                    return RedirectToAction("Index","Home");
+                }
+                return View();
+            }
 
-            //ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
-
-            //return View(student);
-
-            //var user = await userManager.FindByNameAsync(model.Username);
-            //if (user != null && await userManager.CheckPasswordAsync(user, model.Password))
-            //{
-            //    var userRoles = await userManager.GetRolesAsync(user);
-
-            //    var authClaims = new List<Claim>
-            //    {
-            //        new Claim(ClaimTypes.Name, user.UserName),
-            //        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            //    };
-
-            //    foreach (var userRole in userRoles)
-            //    {
-            //        authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-            //    }
-
-            //    var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
-
-            //    var token = new JwtSecurityToken(
-            //        issuer: _configuration["JWT:ValidIssuer"],
-            //        audience: _configuration["JWT:ValidAudience"],
-            //        expires: DateTime.Now.AddHours(3),
-            //        claims: authClaims,
-            //        signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
-            //        );
-
-            //    return Ok(new
-            //    {
-            //        token = new JwtSecurityTokenHandler().WriteToken(token),
-            //        expiration = token.ValidTo
-            //    });
-            //}
-            //return Unauthorized();
             return View();
         }
 
         //[HttpPost]
-        //[Route("register")]
-        //public async Task<IActionResult> Register([FromBody] RegisterModel model)
-        //{
-        //    var userExists = await userManager.FindByNameAsync(model.Username);
-        //    if (userExists != null)
-        //        return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
+        [Route("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:64739/api/Authenticate/login");
+                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                StringContent content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
+                var response = await client.PostAsync("http://localhost:64739/api/Authenticate/login", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = await response.Content.ReadAsStringAsync();
+                    var res = JsonConvert.DeserializeObject<GeneralResponse<string>>(result);
+                    // Save token
 
-        //    ApplicationUser user = new ApplicationUser()
-        //    {
-        //        Email = model.Email,
-        //        SecurityStamp = Guid.NewGuid().ToString(),
-        //        UserName = model.Username
-        //    };
-        //    var result = await userManager.CreateAsync(user, model.Password);
-        //    if (!result.Succeeded)
-        //        return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." });
+                    return RedirectToAction("Index", "Home");
+                }
+                return View();
+            }
 
-        //    return Ok(new Response { Status = "Success", Message = "User created successfully!" });
-        //}
+            return View();
+            //return Ok(new Response { Status = "Success", Message = "User created successfully!" });
+        }
 
         //[HttpPost]
         //[Route("register-admin")]
@@ -140,7 +113,7 @@ namespace OSNWebProject.Controllers
 
 
 
-  
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
