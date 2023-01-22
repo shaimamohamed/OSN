@@ -47,7 +47,7 @@ namespace Service.Services
 
             var respnose = new GeneralResponse<StuentByNameResponse>();
 
-            var studentt = _studentRepository.GetALLStudents()?.SingleOrDefault(n => n.Name.ToLower().Trim().Contains(request.StudentName.ToLower().Trim()));
+            var studentt = _studentRepository.GetALLStudents()?.FirstOrDefault(n => n.Name.ToLower().Trim().Contains(request.StudentName.ToLower().Trim()));
 
             if (studentt == null)
             {
