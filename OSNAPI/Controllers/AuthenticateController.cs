@@ -40,7 +40,7 @@ namespace OSNAPI.Controllers
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
-            var user = await userManager.FindByNameAsync(model.Username);
+            var user = await userManager.FindByNameAsync(model.Username.Trim());
             if (user != null && await userManager.CheckPasswordAsync(user, model.Password))
             {
                 var userRoles = await userManager.GetRolesAsync(user);
@@ -71,11 +71,14 @@ namespace OSNAPI.Controllers
                 //    token = new JwtSecurityTokenHandler().WriteToken(token),
                 //    expiration = token.ValidTo
                 //});
-                return Ok(new GeneralResponse<string>()
+                return Ok(new GeneralResponse<ApplicationUser>()
                 {
+                    
                     Success = true,
-                    Data = new JwtSecurityTokenHandler().WriteToken(token),
-                    Message =  token.ValidTo.ToLongDateString()
+                    Data = user,
+                    //Data = new JwtSecurityTokenHandler().WriteToken(token),
+                    Message = new JwtSecurityTokenHandler().WriteToken(token).ToString()
+                    // Message =  token.ValidTo.ToLongDateString()
                 });
             }
             return Unauthorized();
