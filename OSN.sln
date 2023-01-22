@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSNAPI", "OSNAPI\OSNAPI.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestProject", "XUnitTestProject\XUnitTestProject.csproj", "{2D15D41E-2123-4D78-8213-984EED4B4997}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSNWeb", "OSNWeb\OSNWeb.csproj", "{9FF7CB68-EC24-4950-89E0-BFDE4DF0D570}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSNWebProject", "OSNWebProject\OSNWebProject.csproj", "{0695842C-3C08-4F57-8343-B0C8BAFDD4FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{2D15D41E-2123-4D78-8213-984EED4B4997}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D15D41E-2123-4D78-8213-984EED4B4997}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D15D41E-2123-4D78-8213-984EED4B4997}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9FF7CB68-EC24-4950-89E0-BFDE4DF0D570}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9FF7CB68-EC24-4950-89E0-BFDE4DF0D570}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9FF7CB68-EC24-4950-89E0-BFDE4DF0D570}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9FF7CB68-EC24-4950-89E0-BFDE4DF0D570}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0695842C-3C08-4F57-8343-B0C8BAFDD4FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0695842C-3C08-4F57-8343-B0C8BAFDD4FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0695842C-3C08-4F57-8343-B0C8BAFDD4FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0695842C-3C08-4F57-8343-B0C8BAFDD4FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
