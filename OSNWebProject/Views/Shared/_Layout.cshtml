@@ -94,31 +94,48 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">Students</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Terms" asp-action="Index">Terms</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Subjects" asp-action="Index">Subjects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Marks" asp-action="Index">Marks</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Reports</a>
-                            <ul class="navbar-nav flex-grow-1">
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Report 1</a>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Report 2</a>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Report 3</a>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Report 4</a>
-                                </li>
-                            </ul>
-                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">Students</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Terms" asp-action="Index">Terms</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Subjects" asp-action="Index">Subjects</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Marks" asp-action="Index">Marks</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Reports</a>
+                                <ul class="navbar-nav flex-grow-1">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Report 1</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Report 2</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Report 3</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Report 4</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+
                     </ul>
                 </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a asp-controller="Account" asp-action="Logout">Logout</a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Account" asp-action="Login">Login</a>
+                        }
+
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>

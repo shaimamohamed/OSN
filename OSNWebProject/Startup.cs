@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using OSNWebProject.Data;
 using Data.DataBase;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace OSNWebProject
 {
@@ -30,6 +31,9 @@ namespace OSNWebProject
             //services.AddDbContext<AssessmentProjectDbContext>(options =>
             //        options.UseSqlServer(Configuration.GetConnectionString("ConnStr")));
             //        //options.UseSqlServer(Configuration.GetConnectionString("OSNWebProjectContext")));
+            
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(x => x.LoginPath = "/account/login");
 
             services.AddDbContext<AssessmentProjectDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnStr")));
         }
@@ -49,6 +53,7 @@ namespace OSNWebProject
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
