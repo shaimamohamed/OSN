@@ -79,12 +79,12 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>
+                       @* <th>
                             @Html.DisplayNameFor(model => model.parents.Name)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.parents.Type)
-                        </th>
+                        </th>*@
                         <th>
                             @Html.DisplayNameFor(model => model.Email)
                         </th>
@@ -98,7 +98,7 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>
+             @*               <td>
                                 @Html.DisplayFor(modelItem => item.parents.Name)
                             </td>
                             <td>
@@ -109,7 +109,7 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.parents.Mobile)
-                            </td>
+                            </td>*@
                         </tr>
                     }
                 </tbody>
