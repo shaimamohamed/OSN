@@ -12,13 +12,15 @@ namespace Data.DTO
 
         }
 
+        public int TermID { get; set; }
+        public int StudentID { get; set; }
         public int SubjectID { get; set; }
         public string SubjectName { get; set; }
         public int studentCount { get; set; }
-        public float score { get; set; }
-        public Marks Marks { get; set; } //include student and parents
-        //public List<Student> Student { get; set; }
-        public List<Parent> Parents { get; set; }
+        //public float score { get; set; }
+        public Marks Marks { get; set; } 
+        public List<Student> Students { get; set; }
+       public List<Parent> Parents { get; set; }
 
     }
 }

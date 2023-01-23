@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Core.Entities;
 using Data.DataBase;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OSNWebProject.Controllers
 {
+    [Authorize]
+
     public class SubjectsController : Controller
     {
         private readonly AssessmentProjectDbContext _context;

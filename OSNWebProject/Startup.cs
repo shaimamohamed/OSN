@@ -28,10 +28,7 @@ namespace OSNWebProject
         {
             services.AddControllersWithViews();
 
-            //services.AddDbContext<AssessmentProjectDbContext>(options =>
-            //        options.UseSqlServer(Configuration.GetConnectionString("ConnStr")));
-            //        //options.UseSqlServer(Configuration.GetConnectionString("OSNWebProjectContext")));
-            
+           
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(x => x.LoginPath = "/account/login");
 

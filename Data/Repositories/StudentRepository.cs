@@ -23,8 +23,6 @@ namespace Data.Repositories
         public List<Student> GetALLStudents()
         {
             return  _db.students.Include("Parents").ToList();
-            //return _db.students.ToList() ?? new List<Student>();
-            //return _db.students.AsQueryable<Student>() ?? new Queryable<Student>();
             
         }
         public Student GetStudentById(int Id)

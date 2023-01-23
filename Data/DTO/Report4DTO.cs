@@ -18,7 +18,7 @@ namespace Data.DTO
         public int studentCount { get; set; }
         public float score { get; set; }
         public bool isAbsent { get; set; }
-        public Marks Marks { get; set; } //include student and parents
+        public Marks Marks { get; set; } 
         public List<Student> Students { get; set; }
         public List<Parent> Parents { get; set; }
 

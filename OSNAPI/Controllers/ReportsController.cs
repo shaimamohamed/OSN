@@ -28,8 +28,6 @@ namespace OSNAPI.Controllers
 
         #region Actions
 
-        //[Produces("application/json")]
-        //[HttpGet("Report1")]
         [HttpGet]
         [Route("Report1")]
         public async Task<IActionResult> Report1()

@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Core.Entities;
 using Data.DataBase;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OSNWebProject.Controllers
 {
+    [Authorize]
+
     public class MarksController : Controller
     {
         private readonly AssessmentProjectDbContext _context;
@@ -72,6 +75,7 @@ namespace OSNWebProject.Controllers
             ViewData["StudentId"] = new SelectList(_context.students, "ID", "Name", marks.StudentId);
             ViewData["SubjectId"] = new SelectList(_context.Subjects, "ID", "Name", marks.SubjectId);
             ViewData["TermId"] = new SelectList(_context.Terms, "ID", "Name", marks.TermId);
+            //ViewData["StudyYears"] = new SelectList(Core.Enums.StudyYears, "ID", "Name", marks.TermId);
             return View(marks);
         }
 
@@ -129,6 +133,8 @@ namespace OSNWebProject.Controllers
             ViewData["StudentId"] = new SelectList(_context.students, "ID", "Name", marks.StudentId);
             ViewData["SubjectId"] = new SelectList(_context.Subjects, "ID", "Name", marks.SubjectId);
             ViewData["TermId"] = new SelectList(_context.Terms, "ID", "Name", marks.TermId);
+            //ViewData["StudyYears"] = new SelectList(Core.Enums.StudyYears, "ID", "Name", marks.TermId);
+            
             return View(marks);
         }
 

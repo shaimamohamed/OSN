@@ -55,7 +55,6 @@ namespace Data.Repositories
             subjectitem = GetSubjectById(subject.ID);
 
             return subjectitem;
-            //return product;
         }
         public Subject DeleteSubject(int Id)
         {

@@ -37,23 +37,13 @@ namespace OSNWebProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                // call api to get token
-                //var user = users.Where(x => x.Username == objLoginModel.UserName && x.Password == objLoginModel.Password).FirstOrDefault();
                 using (var client = new HttpClient())
                 {
-                    //client.BaseAddress = new Uri("http://localhost:64739/api/Authenticate/login");
-                    client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                   client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                     StringContent content = new StringContent(JsonConvert.SerializeObject(objLoginModel), Encoding.UTF8, "application/json");
                     var response = await client.PostAsync("http://localhost:64739/api/Authenticate/login", content);
-                    //if (response.IsSuccessStatusCode)
-                    //{
-                    //    var result = await response.Content.ReadAsStringAsync();
-                    //    var res = JsonConvert.DeserializeObject<GeneralResponse<ApplicationUser>>(result);                        
-                    //}                 
-                //}
-
-                if (!response.IsSuccessStatusCode)
-                //if (user == null)
+              
+                if (!response.IsSuccessStatusCode)               
                     {
                     //Add logic here to display some message to user
                     ViewBag.Message = "Invalid Credential";
@@ -63,8 +53,6 @@ namespace OSNWebProject.Controllers
                 {
                         var result = await response.Content.ReadAsStringAsync();
                         var res = JsonConvert.DeserializeObject<GeneralResponse<ApplicationUser>>(result);
-                        //A claim is a statement about a subject by an issuer and
-                        //represent attributes of the subject that are useful in the context of authentication and authorization operations.
                         var claims = new List<Claim>() {
                     new Claim(ClaimTypes.Name,objLoginModel.UserName),
                     new Claim("FavoriteDrink","Tea")

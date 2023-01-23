@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Core.Entities;
 using Data.DataBase;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OSNWebProject.Controllers
 {
+    [Authorize]
+
     public class ParentsController : Controller
     {
         private readonly AssessmentProjectDbContext _context;
@@ -46,6 +49,7 @@ namespace OSNWebProject.Controllers
         // GET: Parents/Create
         public IActionResult Create()
         {
+           // ViewData["Type"] = new SelectList(Core.Enums.ParentType, "ID", "Name", marks.TermId);
             return View();
         }
 
@@ -78,6 +82,7 @@ namespace OSNWebProject.Controllers
             {
                 return NotFound();
             }
+           // ViewData["Type"] = new SelectList(Core.Enums.ParentType, "ID", "Name", marks.TermId);
             return View(parent);
         }
 

@@ -60,8 +60,7 @@ namespace Service.Services
                 Success = true,
                 Data = new StuentByNameResponse()
                 {
-                    student = studentt,
-                    //parents = studentt.Parents.ToList()
+                    student = studentt
                 }
             };
 

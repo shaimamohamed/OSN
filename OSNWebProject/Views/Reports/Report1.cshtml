@@ -32,33 +32,36 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @if (Model != null && Model.Count() > 0)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StudentName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Gender)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DOB)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.mobile)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CurrentTermName)
-                </td>
-                <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ParentsModal">
-                        Parents
-                    </button>
-                </td>
-            </tr>
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.DOB)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.Mobile)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CurrentTermName)
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onkeyup="myFunction(@item.StudentName)" data-toggle="modal" data-target="#ParentsModal">
+                            Parents
+                        </button>
+                    </td>
+                </tr>
+            }
         }
     </tbody>
 </table>
@@ -76,43 +79,59 @@
                     </button>
                 </div>
 
-            <table class="table">
+            <table class="table" id="myTable">
                 <thead>
+                    @*<tr>
+                        <th>student</th>
+                    </tr>*@
                     <tr>
-                       @* <th>
-                            @Html.DisplayNameFor(model => model.parents.Name)
+                        <th>
+                            @Html.DisplayName("Name")
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.parents.Type)
-                        </th>*@
-                        <th>
-                            @Html.DisplayNameFor(model => model.Email)
+                            @Html.DisplayName("Type")
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.mobile)
+                            @Html.DisplayName("Email")
+                        </th>
+                        <th>
+                            @Html.DisplayName("mobile")
                         </th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @if (Model != null && Model.Count() > 0)
                     {
-                        <tr>
-             @*               <td>
-                                @Html.DisplayFor(modelItem => item.parents.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.parents.Type)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.parents.Email)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.parents.Mobile)
-                            </td>*@
-                        </tr>
+                        foreach (var item in Model)
+                        {
+                            @*<tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StudentName)
+                                </td>
+                            </tr>*@
+                            if (item.Parents != null && item.Parents.Count() > 0) { 
+                            foreach (var item2 in item.Parents)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item2.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item2.Type)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item2.Email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item2.Mobile)
+                                    </td>
+                                </tr>
+                                }
+                            }
+                        }
                     }
-                </tbody>
+                    </tbody>
             </table>
 
 
@@ -123,3 +142,28 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    function myFunction(name) {
+        // Declare variables
+        var  filter, table, tr, td, i, txtValue;
+        //input = document.getElementById("myInput");
+        filter = name.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+       
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>

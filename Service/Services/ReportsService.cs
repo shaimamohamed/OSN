@@ -85,7 +85,6 @@ namespace Service.Services
 
         }
 
-
         public async Task<GeneralResponse<List<Report4DTO>>> Report4()
         {
 

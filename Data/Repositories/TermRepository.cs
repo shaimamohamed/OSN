@@ -56,7 +56,6 @@ namespace Data.Repositories
             termitem = GetTermById(term.ID);
 
             return termitem;
-            //return product;
         }
         public Term DeleteTerm(int Id)
         {

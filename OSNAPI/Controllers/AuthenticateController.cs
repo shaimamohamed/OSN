@@ -66,19 +66,12 @@ namespace OSNAPI.Controllers
                     signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                     );
 
-                //return Ok(new
-                //{
-                //    token = new JwtSecurityTokenHandler().WriteToken(token),
-                //    expiration = token.ValidTo
-                //});
                 return Ok(new GeneralResponse<ApplicationUser>()
                 {
                     
                     Success = true,
                     Data = user,
-                    //Data = new JwtSecurityTokenHandler().WriteToken(token),
                     Message = new JwtSecurityTokenHandler().WriteToken(token).ToString()
-                    // Message =  token.ValidTo.ToLongDateString()
                 });
             }
             return Unauthorized();

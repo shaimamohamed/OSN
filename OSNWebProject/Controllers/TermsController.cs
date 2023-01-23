@@ -8,12 +8,14 @@ using Microsoft.EntityFrameworkCore;
 using Core.Entities;
 using OSNWebProject.Data;
 using Data.DataBase;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OSNWebProject.Controllers
 {
+    [Authorize]
     public class TermsController : Controller
     {
-        //private readonly OSNWebProjectContext _context;
+      
         private readonly AssessmentProjectDbContext _context;
 
         public TermsController(AssessmentProjectDbContext context)

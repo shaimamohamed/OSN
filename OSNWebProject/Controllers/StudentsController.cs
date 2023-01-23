@@ -8,9 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using Core.Entities;
 using Data.DataBase;
 using System.Net.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OSNWebProject.Controllers
 {
+    [Authorize]
+
     public class StudentsController : Controller
     {
         private readonly AssessmentProjectDbContext _context;
@@ -28,22 +31,6 @@ namespace OSNWebProject.Controllers
                 var responseTask = client.GetAsync("student");
                 responseTask.Wait();
 
-                //var result = responseTask.Result;
-                //if (result.IsSuccessStatusCode)
-                //{
-                //    var readTask = result.Content.ReadAsAsync<IList<StudentViewModel>>();
-                //    readTask.Wait();
-
-                //    students = readTask.Result;
-                //}
-                //else //web api sent error response 
-                //{
-                //    //log response status here..
-
-                //    students = Enumerable.Empty<StudentViewModel>();
-
-                //    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
-                //}
             }
             return null;
         }
@@ -74,6 +61,7 @@ namespace OSNWebProject.Controllers
         // GET: Students/Create
         public IActionResult Create()
         {
+            //ViewData["Gender"] = new SelectList(Core.Enums.GenderType, "ID", "Name", marks.TermId);
             return View();
         }
 
@@ -106,6 +94,8 @@ namespace OSNWebProject.Controllers
             {
                 return NotFound();
             }
+           // ViewData["Gender"] = new SelectList(Core.Enums.GenderType, "ID", "Name", marks.TermId);
+           
             return View(student);
         }
 

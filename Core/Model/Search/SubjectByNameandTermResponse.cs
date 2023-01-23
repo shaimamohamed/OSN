@@ -16,8 +16,6 @@ namespace Core.Model.Search
         {
 
         }
-        //public Student student { get; set; }
-        //public Term term { get; set; }
         public List<Marks> marks { get; set; }
 
 

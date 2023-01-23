@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace OSNAPI.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class MarksController : ControllerBase
@@ -62,8 +62,6 @@ namespace OSNAPI.Controllers
         {
             var respnose = new GeneralResponse<Marks>();
 
-            //var isValid = !string.IsNullOrEmpty(request.Name);
-            //if (!isValid)
             if (!ModelState.IsValid)
             {
                 respnose.Message = "Validaton Error";
@@ -120,8 +118,6 @@ namespace OSNAPI.Controllers
         {
             var respnose = new GeneralResponse<Marks>();
 
-           // var isValid = !string.IsNullOrEmpty(request.Name);
-            //if (!isValid)
             if (!ModelState.IsValid)
             {
                 respnose.Message = "Validaton Error";

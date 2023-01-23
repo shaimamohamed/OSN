@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace OSNAPI.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class StudentController : ControllerBase
@@ -62,8 +62,6 @@ namespace OSNAPI.Controllers
         {
             var respnose = new GeneralResponse<Student>();
 
-            //var isValid = !string.IsNullOrEmpty(request.Name);
-            //if (!isValid)
             if (!ModelState.IsValid)
             {
                 respnose.Message = "Validaton Error";
@@ -91,7 +89,6 @@ namespace OSNAPI.Controllers
                     Mobile = request.Mobile,
                     DOB = request.DOB,
                     Gender = request.Gender,
-                    //Parents = request.Parents,
                     CreatedOn = DateTime.Now,
                     CreatedBy = "",
                     UpdatedOn = DateTime.Now,
@@ -120,8 +117,6 @@ namespace OSNAPI.Controllers
         {
             var respnose = new GeneralResponse<Student>();
 
-            //var isValid = !string.IsNullOrEmpty(request.Name);
-            //if (!isValid)
             if (!ModelState.IsValid){
                 respnose.Message = "Validaton Error";
                 return respnose;
@@ -196,8 +191,6 @@ namespace OSNAPI.Controllers
         {
             var respnose = new GeneralResponse<Parent>();
 
-            //var isValid = !string.IsNullOrEmpty(request.Name);
-            //if (!isValid)
             if (!ModelState.IsValid)
             {
                 respnose.Message = "Validaton Error";
@@ -206,8 +199,7 @@ namespace OSNAPI.Controllers
 
             try
             {
-
-                var stuent = await _studentService.CreateParent(request);
+                 var stuent = await _studentService.CreateParent(request);
 
                 if (stuent == null)
                 {
@@ -252,8 +244,6 @@ namespace OSNAPI.Controllers
         {
             var respnose = new GeneralResponse<Parent>();
 
-            //var isValid = !string.IsNullOrEmpty(request.Name);
-            //if (!isValid)
             if (!ModelState.IsValid)
             {
                 respnose.Message = "Validaton Error";

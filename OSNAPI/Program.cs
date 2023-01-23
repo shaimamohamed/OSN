@@ -22,7 +22,6 @@ namespace OSNAPI
 
              host.Run();
 
-            //CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

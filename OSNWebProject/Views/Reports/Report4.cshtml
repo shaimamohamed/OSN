@@ -10,40 +10,67 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th colspan="3">
                 @Html.DisplayNameFor(model => model.SubjectName)
             </th>
-            <th>
+            <th colspan="2">
                 @Html.DisplayNameFor(model => model.studentCount)
             </th>
-            <th>
-                @Html.DisplayName("Student")
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @if (Model != null && Model.Count() > 0)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SubjectName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.studentCount)
-                </td>
-                <td>
-                    // //////////////////////////////////////////////////////////////////////////
-                </td>
-                <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ParentsModal">
-                        Parents
-                    </button>
-                </td>
-            </tr>
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td colspan="3">
+                        @Html.DisplayFor(modelItem => item.SubjectName)
+                    </td>
+                    <td colspan="2">
+                        @Html.DisplayFor(modelItem => item.studentCount)
+                    </td>
+                </tr>
+
+                @if (item != null)
+                {
+                    foreach (var a in item.Students)
+                    {
+    <tr>
+        <td>Name</td>
+        <td>Gender</td>
+        <td>Email</td>
+        <td>Mobile</td>
+        <td></td>
+    </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => a.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => a.Gender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => a.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => a.Mobile)
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ParentsModal">
+                                    Parents
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                }
+
+
+            }
         }
     </tbody>
-</table>
+ 
+ </table>
 
 
 <!-- Modal -->
@@ -58,12 +85,12 @@
                 </button>
             </div>
 
-            <table class="table">
+            <table class="table" id="myTable">
                 <thead>
+                    @*<tr>
+                        <th>student</th>
+                    </tr>*@
                     <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Parents.FirstOrDefault().Name)
-                        </th>
                         <th>
                             @Html.DisplayName("Name")
                         </th>
@@ -80,22 +107,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.FirstOrDefault().Parents)
+                    @if (Model != null && Model.Count() > 0)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Type)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Email)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Mobile)
-                            </td>
-                        </tr>
+                        foreach (var item in Model)
+                        {
+                            @*<tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Students.FirstOrDefault().Name)
+                                </td>
+                            </tr>*@
+                            if (item.Parents != null && item.Parents.Count() > 0)
+                            {
+                                foreach (var item2 in item.Parents)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item2.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item2.Type)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item2.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item2.Mobile)
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
                     }
                 </tbody>
             </table>

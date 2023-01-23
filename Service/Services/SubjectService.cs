@@ -59,24 +59,6 @@ namespace Service.Services
                 return respnose;
             }
 
-            //List<Term> Temp = new List<Term>();
-            //foreach (var item in products)
-            //{
-            //    var productResponse = new terms
-            //    {
-            //        Id = item.Id,
-            //        Code = item.Code,
-            //        Name = item.Name,
-            //        Cost = item.Cost,
-            //        Price = item.PurchaseSingleItemPrice,
-            //        ImageBase64 = item.ImageBase64,
-            //        CreateDate = item.CreateDate,
-            //        UpdateDate = item.UpdateDate
-            //    };
-            //    Temp.Add(productResponse);
-            //}
-
-
             respnose = new GeneralResponse<SubjectByNameandTermResponse>()
             {
                 Success = true,

@@ -14,7 +14,7 @@ using Core.Model.Search;
 
 namespace OSNAPI.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SearchCriteriaController : ControllerBase
@@ -30,6 +30,7 @@ namespace OSNAPI.Controllers
         }
 
         #region Actions
+
         [Produces("application/json")]
         [HttpGet("GetStudentByName")]
         public async Task<IActionResult> GetStudentByName(string Name)
@@ -44,6 +45,7 @@ namespace OSNAPI.Controllers
 
             return Ok(response);
         }
+
 
         [HttpGet("GetSubjectByNameAndTerm")]
         public async Task<IActionResult> GetSubjectByNameandTerm([FromHeader] SubjectByNameandTermRequest request)

@@ -22,18 +22,11 @@ namespace Data.Repositories
         #region Actions
         public List<Marks> GetALLMarks()
         {
-            //var res = _db.Marks
-            // .Include(t => t.Term)
-            // .ThenInclude(s => s.Subjects)
-            ////.ThenInclude(k => k.)
-            //.ToList();
-            //return res.ToList();
             return _db.Marks.Include("Term")
                    .Include("Subject")
                    .Include("Student")
                    .ToList();
-            //return _db.Marks.ToList() ?? new List<Marks>();
-
+         
         }
         public Marks GetMarksById(int Id)
         {

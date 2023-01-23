@@ -12,9 +12,12 @@ namespace Data.DTO
 
         }
 
+        public int TermID { get; set; }
+        public int StudentID { get; set; }
         public int SubjectID { get; set; }
         public string SubjectName { get; set; }
         public int studentCount { get; set; }
+        public List<Student> Students { get; set; }
 
     }
 }

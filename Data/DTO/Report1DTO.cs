@@ -18,7 +18,6 @@ namespace Data.DTO
         public string Email { get; set; }
         public string mobile { get; set; }
         public string CurrentTermName { get; set; }
-        //public Parent parents { get; set; }
         public List<Parent> Parents { get; set; }
 
         public Student Student { get; set; }

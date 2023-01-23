@@ -14,9 +14,6 @@ namespace Data.DataBase
 {
     public partial  class AssessmentProjectDbContext : IdentityDbContext<ApplicationUser>
     {
-        //public AssessmentProjectDbContext()
-        //{
-        //}
 
         public AssessmentProjectDbContext(DbContextOptions<AssessmentProjectDbContext> options)
             : base(options)
