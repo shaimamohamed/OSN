@@ -1,0 +1,18 @@
+**change config ConnectionString
+
+** ensure that multiple startup project of 3 following projects :
+- API project.
+- Web project.
+
+
+**Follow this Order:
+- Register User then login and Save session
+
+** Navigate between Entities CRDU Pages and
+Report Pages from Home Page after login.
+
+** Use PostMan Collection for testing thhe API
+in same ordder (Register User => Login => 
+take token in response and send it in postman requests)
+
+** Use SwaggerUI For Test (comment Authorization Code in startup file and Controllers for API and Web)
