@@ -75,8 +75,7 @@ namespace OSNWebProject.Controllers
             ViewData["StudentId"] = new SelectList(_context.students, "ID", "Name", marks.StudentId);
             ViewData["SubjectId"] = new SelectList(_context.Subjects, "ID", "Name", marks.SubjectId);
             ViewData["TermId"] = new SelectList(_context.Terms, "ID", "Name", marks.TermId);
-            //ViewData["StudyYears"] = new SelectList(Core.Enums.StudyYears, "ID", "Name", marks.TermId);
-            return View(marks);
+           return View(marks);
         }
 
         // GET: Marks/Edit/5
@@ -133,7 +132,6 @@ namespace OSNWebProject.Controllers
             ViewData["StudentId"] = new SelectList(_context.students, "ID", "Name", marks.StudentId);
             ViewData["SubjectId"] = new SelectList(_context.Subjects, "ID", "Name", marks.SubjectId);
             ViewData["TermId"] = new SelectList(_context.Terms, "ID", "Name", marks.TermId);
-            //ViewData["StudyYears"] = new SelectList(Core.Enums.StudyYears, "ID", "Name", marks.TermId);
             
             return View(marks);
         }

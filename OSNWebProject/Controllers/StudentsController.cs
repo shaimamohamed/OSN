@@ -61,7 +61,6 @@ namespace OSNWebProject.Controllers
         // GET: Students/Create
         public IActionResult Create()
         {
-            //ViewData["Gender"] = new SelectList(Core.Enums.GenderType, "ID", "Name", marks.TermId);
             return View();
         }
 
@@ -94,8 +93,6 @@ namespace OSNWebProject.Controllers
             {
                 return NotFound();
             }
-           // ViewData["Gender"] = new SelectList(Core.Enums.GenderType, "ID", "Name", marks.TermId);
-           
             return View(student);
         }
 

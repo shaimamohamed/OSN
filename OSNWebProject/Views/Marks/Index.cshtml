@@ -61,9 +61,9 @@ Term :
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(model => Enum.GetName(typeof(Core.Enums.StudyYears), item.StudyYear))
+                @*@Html.DisplayFor(model => Enum.GetName(typeof(Core.Enums.StudyYears), item.StudyYear))*@
 
-                @* @Html.DisplayFor(modelItem => item.StudyYear)*@
+                 @Html.DisplayFor(modelItem => item.StudyYear)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Student.Name)

@@ -49,7 +49,6 @@ namespace OSNWebProject.Controllers
         // GET: Parents/Create
         public IActionResult Create()
         {
-           // ViewData["Type"] = new SelectList(Core.Enums.ParentType, "ID", "Name", marks.TermId);
             return View();
         }
 
@@ -82,8 +81,7 @@ namespace OSNWebProject.Controllers
             {
                 return NotFound();
             }
-           // ViewData["Type"] = new SelectList(Core.Enums.ParentType, "ID", "Name", marks.TermId);
-            return View(parent);
+          return View(parent);
         }
 
         // POST: Parents/Edit/5
